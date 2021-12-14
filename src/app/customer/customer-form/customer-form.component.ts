@@ -1,3 +1,4 @@
+import { CustomerService } from './../../customer.service';
 import { Component, OnInit } from '@angular/core';
 import {Customer} from '../customer'
 
@@ -8,13 +9,21 @@ import {Customer} from '../customer'
 })
 export class CustomerFormComponent implements OnInit {
 
-  customer!: Customer;
-  constructor() { }
+  customer: Customer;
+  success: boolean = false;
+  errors: String[] = [];
+
+  constructor(private service: CustomerService ) {
+    this.customer = service.getCustomer();
+   }
 
   ngOnInit(): void {
+
   }
 
   onSubmit(){
-
+    this.service.save(this.customer).subscribe(response => {this.success = true}, errorResponse =>{
+    this.errors = errorResponse.error.errors
+    })
   }
 }
