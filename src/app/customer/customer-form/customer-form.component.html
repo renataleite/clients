@@ -1,1 +1,43 @@
-<p>Formulário de clientes</p>
+<h1 class="mt-4">Customers</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Register</li>
+</ol>
+<div class="container">
+  <form #customerForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">ID:</label>
+          <input type="text" class="form-control" [ngModel]="customer.id" name="id" disabled="true">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">Register:</label>
+          <input type="text" class="form-control" [ngModel]="customer.registerDate" name="registerDate" disabled="true">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">Name: *</label>
+          <input type="text" class="form-control" [(ngModel)]="customer.name" name="name">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">CPF: *</label>
+          <input type="text" class="form-control"  [(ngModel)]="customer.cpf" name="cpf">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-success">
+          <i class="fa fa-save"></i> Salvar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
