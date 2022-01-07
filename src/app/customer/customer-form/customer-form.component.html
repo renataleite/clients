@@ -1,9 +1,9 @@
-<h1 class="mt-4">Customers</h1>
-<ol class="breadcrumb mb-4">
-  <li class="breadcrumb-item active">Register</li>
-</ol>
 <div class="container">
-  <form #customerForm="ngForm" (ngSubmit)="onSubmit()">
+  <h1 class="mt-4">Customers</h1>
+  <ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Register</li>
+  </ol>
+  <form #customerForm="ngForm">
     <div class="row">
       <div class="col-md-12">
         <div class="alert alert-success" role="alert" *ngIf="success">
@@ -38,14 +38,17 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="">CPF: *</label>
-          <input type="text" class="form-control"  [(ngModel)]="customer.cpf" name="cpf">
+          <input type="text" class="form-control" [(ngModel)]="customer.cpf" name="cpf">
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-3">
         <button type="submit" class="btn btn-success">
           <i class="fa fa-save"></i> Salvar
+        </button>
+        <button type="button" class="btn btn-danger ml-1" (click)="backList()">
+          <i class="fa fa-arrow-alt-circle-left"></i> Voltar
         </button>
       </div>
     </div>

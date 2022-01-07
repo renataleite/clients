@@ -1,0 +1,39 @@
+<div class="container">
+
+  <h1 class="mt-4">Customers</h1>
+  <ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Register</li>
+  </ol>
+  <div class="row">
+    <div class="col-md-2">
+      <button class="btn btn-warning" (click)="newRegister()">
+        <i class="fa fa-plus"></i> Novo
+      </button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-condensed table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>CPF</th>
+            <th>Register Date</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of customers">
+            <td>{{ customer.id }}</td>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.cpf }}</td>
+            <td>{{ customer.registerDate }}</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

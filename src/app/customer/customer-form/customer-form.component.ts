@@ -1,5 +1,6 @@
 import { CustomerService } from './../../customer.service';
 import { Component, OnInit } from '@angular/core';
+import { Router} from '@angular/router';
 import {Customer} from '../customer'
 
 @Component({
@@ -13,12 +14,19 @@ export class CustomerFormComponent implements OnInit {
   success: boolean = false;
   errors: String[] = [];
 
-  constructor(private service: CustomerService ) {
-    this.customer = service.getCustomer();
+  constructor(
+    private service: CustomerService,
+    private router: Router
+    ) {
+    this.customer = new Customer();
    }
 
   ngOnInit(): void {
 
+  }
+
+  backList(){
+    this.router.navigate(['/customer-list'])
   }
 
   onSubmit(){
