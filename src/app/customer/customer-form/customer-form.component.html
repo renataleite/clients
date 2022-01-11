@@ -1,9 +1,9 @@
 <div class="container">
   <h1 class="mt-4">Customers</h1>
   <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Register</li>
+    <li class="breadcrumb-item active">{{customer.id ? 'Edição' : 'Register'}}</li>
   </ol>
-  <form #customerForm="ngForm">
+  <form #customerForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="row">
       <div class="col-md-12">
         <div class="alert alert-success" role="alert" *ngIf="success">
@@ -44,11 +44,14 @@
     </div>
     <div class="row">
       <div class="col-md-3">
-        <button type="submit" class="btn btn-success">
-          <i class="fa fa-save"></i> Salvar
+        <button type="submit" class="btn btn-success" *ngIf="!customer.id">
+          <i class="fa fa-save"></i> Save
+        </button>
+        <button type="submit" class="btn btn-primary" *ngIf="customer.id">
+          <i class="fa fa-sync-alt"></i> Update
         </button>
         <button type="button" class="btn btn-danger ml-1" (click)="backList()">
-          <i class="fa fa-arrow-alt-circle-left"></i> Voltar
+          <i class="fa fa-arrow-alt-circle-left"></i> Back
         </button>
       </div>
     </div>
