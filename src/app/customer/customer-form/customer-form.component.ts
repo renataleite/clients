@@ -12,7 +12,7 @@ import { Customer } from '../customer';
 export class CustomerFormComponent implements OnInit {
   customer: Customer;
   success: boolean = false;
-  errors: String[] = [];
+  errors: String[] | null = [];
   id: number | undefined;
 
   constructor(
@@ -41,14 +41,25 @@ export class CustomerFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.service.save(this.customer).subscribe(
-      (response) => {
-        (this.success = true), (this.errors = []), (this.customer = response);
-      },
-      (errorResponse) => {
-        this.success = false;
-        this.errors = errorResponse.error.errors;
-      }
-    );
+    if (this.id) {
+      this.service
+        .update(this.customer)
+        .subscribe(response => {
+          this.success = true;
+          this.errors = null;
+        }, errorResponse =>{
+          this.errors = ['error updating client']
+        })
+    } else {
+      this.service.save(this.customer).subscribe(
+        (response) => {
+          (this.success = true), (this.errors = []), (this.customer = response);
+        },
+        (errorResponse) => {
+          this.success = false;
+          this.errors = errorResponse.error.errors;
+        }
+      );
+    }
   }
 }

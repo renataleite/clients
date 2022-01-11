@@ -14,14 +14,9 @@ export class CustomerService {
     return this.http.post<Customer>('http:/localhost:8080/api/clientes', customer);
   }
 
-/*   getCustomer() : Customer[]{
-    let customer = new Customer();
-    customer.id = 1;
-    customer.name = 'Fulano';
-    customer.registerDate = "18/04/2020";
-    customer.cpf = '1234567';
-    return [customer];
-  } */
+  update(customer: Customer): Observable<any>{
+    return this.http.put<Customer>(`http://localhost:8080/api/clients/${customer.id}`, customer);
+  }
 
   getCustomer() : Observable<Customer[]>{
     return this.http.get<Customer[]>('http://localhost:8080/api/clients');
