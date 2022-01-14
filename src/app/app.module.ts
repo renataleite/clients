@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ServiceProvidedModule } from './service-provided/service-provided.module'
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     TemplateModule,
     CustomerModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceProvidedModule
   ],
   providers: [
     CustomerService
