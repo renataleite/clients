@@ -1,3 +1,4 @@
+import { ServiceProvidedService } from './service-provided.service';
 import { CustomerService } from './customer.service';
 import { CustomerModule } from './customer/customer.module';
 import { TemplateModule } from './template/template.module';
@@ -24,7 +25,8 @@ import { ServiceProvidedModule } from './service-provided/service-provided.modul
     ServiceProvidedModule
   ],
   providers: [
-    CustomerService
+    CustomerService,
+    ServiceProvidedService
   ],
   bootstrap: [AppComponent]
 })
