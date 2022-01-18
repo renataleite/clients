@@ -9,8 +9,11 @@
                 {{signingUp?'New user registration': 'Log in'}}
               </h3>
               <div class="card-body">
+                <div class="alert alert-danger" *ngIf="successMessage">
+                  {{successMessage}}
+                </div>
                 <div class="alert alert-danger" *ngIf="loginError">
-                  Incorrect login and or password
+                  {{loginError}}
                 </div>
                 <form #loginForm="ngForm" (submit)="onSubmit();">
                   <div class="form-group">
@@ -27,7 +30,7 @@
                     <button type="submit" class="btn btn-primary" *ngIf="!signingUp">
                       Send
                     </button>
-                    <button type="submit" class="btn btn-success" *ngIf="signingUp">
+                    <button type="submit" (click)="register()" class="btn btn-success" *ngIf="signingUp">
                       Register
                     </button>
                     <button type="submit" (click)="cancelRegister()" class="btn btn-danger ml-1" *ngIf="signingUp">

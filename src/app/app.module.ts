@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { FormsModule } from '@angular/forms';
 import { ServiceProvidedService } from './service-provided.service';
 import { CustomerService } from './customer.service';
@@ -32,7 +33,8 @@ import { LayoutComponent } from './layout/layout.component'
   ],
   providers: [
     CustomerService,
-    ServiceProvidedService
+    ServiceProvidedService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
