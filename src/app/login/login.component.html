@@ -6,29 +6,45 @@
           <div class="col-lg-5">
             <div class="card shadow-lg border-0 rounded-lg mt-5">
               <h3 class="text-center font-weight-light my-4">
-                Entrar
+                {{signingUp?'New user registration': 'Log in'}}
               </h3>
-            </div>
-            <div class="card-body">
-              <div class="alert alert-danger">
-                Incorrect login and or password
-              </div>
-              <form #loginForm="ngForm" (submit)="onSubmit();">
-                <div class="form-group">
-                  <label class="small mb-1"></label>
-                  <input type="text" name="username" [(ngModel)]="username" class="form-control py-4" placeholder="Enter your login">
+              <div class="card-body">
+                <div class="alert alert-danger" *ngIf="loginError">
+                  Incorrect login and or password
                 </div>
-                <div class="form-group">
-                  <label class="small mb-1"></label>
-                  <input type="text" name="password" [(ngModel)]="password" class="form-control py-4" placeholder="Enter your password">
+                <form #loginForm="ngForm" (submit)="onSubmit();">
+                  <div class="form-group">
+                    <label class="small mb-1"></label>
+                    <input type="text" name="username" [(ngModel)]="username" class="form-control py-4"
+                      placeholder="Enter your login">
+                  </div>
+                  <div class="form-group">
+                    <label class="small mb-1"></label>
+                    <input type="text" name="password" [(ngModel)]="password" class="form-control py-4"
+                      placeholder="Enter your password">
+                  </div>
+                  <div class="form-group d-fle align-items-center justify-content-between mt-4 mb-0">
+                    <button type="submit" class="btn btn-primary" *ngIf="!signingUp">
+                      Send
+                    </button>
+                    <button type="submit" class="btn btn-success" *ngIf="signingUp">
+                      Register
+                    </button>
+                    <button type="submit" (click)="cancelRegister()" class="btn btn-danger ml-1" *ngIf="signingUp">
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="card-footer text-center">
+                <div class="small">
+                  <a href="#" (click)="prepareRegister($event)">
+                    Don't have a User? Register!
+                  </a>
                 </div>
-              </form>
-              <div class="form-group d-fle align-items-center justify-content-between mt-4 mb-0">
-                <button type="submit" class="btn btn-primary">
-                  Send
-                </button>
               </div>
             </div>
+
           </div>
         </div>
       </div>

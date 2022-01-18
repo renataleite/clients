@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +11,20 @@ export class LoginComponent {
   username!: string;
   password!: string;
   loginError!: boolean;
+  signingUp!: boolean;
 
-  constructor() { }
+  constructor( private router: Router) { }
 
   onSubmit(){
-    console.log('Dados:', this.username)
+    this.router.navigate(['/home']);
+  }
+
+  prepareRegister(event: { preventDefault: () => void; }){
+    event.preventDefault();
+    this.signingUp = true;
+  }
+
+  cancelRegister(){
+    this.signingUp= false;
   }
 }
