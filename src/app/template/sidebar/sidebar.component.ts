@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AuthService } from './../../auth.service';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,17 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent implements OnInit, AfterViewInit {
-  constructor() {}
+  loggedUser!:string;
+  constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loggedUser = this.authService.getAuthenticatedUser();
+  }
   ngAfterViewInit(): void {
 
+  }
+  logout(){
+    this.authService.logOut();
+    this.router.navigate(['/login']);
   }
 }

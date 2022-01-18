@@ -3,9 +3,10 @@ import { CustomersListComponent } from './customers-list/customers-list.componen
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
+import { AuthGuard } from '../auth.guard';
 
 const routes: Routes = [
-  {path: 'customer', component: LayoutComponent, children: [
+  {path: 'customer', component: LayoutComponent, canActivate: [AuthGuard], children: [
       { path: 'form', component: CustomerFormComponent },
       { path: 'form/:id', component: CustomerFormComponent },
       { path: 'list', component: CustomersListComponent },
