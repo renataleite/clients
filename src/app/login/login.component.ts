@@ -12,7 +12,7 @@ export class LoginComponent {
 
   username!: string;
   password!: string;
-  loginError!: boolean;
+  errors!: string[];
   signingUp!: boolean;
   successMessage!: any;
 
@@ -39,10 +39,13 @@ export class LoginComponent {
     this.authService
       .save(user)
       .subscribe(response => {
-        this.successMessage = 'Successfully registered!'
-        this.loginError = false;
-      },error =>{
-        this.loginError = true;
+        this.successMessage = 'Successfully registered!',
+        this.signingUp = false;
+        this.username = '';
+        this.password = '';
+        this.errors = [];
+      },errorResponse =>{
+        this.errors = errorResponse.error.errors;
         this.successMessage = null;
       }
     )}
