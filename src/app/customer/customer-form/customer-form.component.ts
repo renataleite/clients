@@ -37,7 +37,7 @@ export class CustomerFormComponent implements OnInit {
   }
 
   backList() {
-    this.router.navigate(['/customer-list']);
+    this.router.navigate(['/customer/list']);
   }
 
   onSubmit() {
